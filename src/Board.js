@@ -78,13 +78,28 @@
     // --------------------------------------------------------------
     //
     // test if a specific row on this board contains a conflict
+    // var myBoard = new Board({n: 4})
+    // myBoard.rows()
+    // myBoard.togglePiece(1,1);
+
     hasRowConflictAt: function(rowIndex) {
-      return false; // fixme
+      // what defines a rowConflict on a specific row
+      // iterate over row and see if we have more than 1 1's
+      console.log(this);
+      // this.Board[rowIndex]
+      // if yes return true
+      // else return false
+      // return false; // fixme
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      return false; // fixme
+      // iterate over the board and call hasRowConflicteAt(rowIndex)
+      // for each row.
+      // all must be false to return false
+      // as soon we see a single true then return turn
+      // otherwise return false
+      // return false; // fixme
     },
 
 
