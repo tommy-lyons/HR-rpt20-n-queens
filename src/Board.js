@@ -85,11 +85,11 @@
     hasRowConflictAt: function(rowIndex) {
       // what defines a rowConflict on a specific row
       // iterate over row and see if we have more than 1 1's
-      console.log(this);
+      // console.log(this);
       // this.Board[rowIndex]
       // if yes return true
       // else return false
-      // return false; // fixme
+      return false; // fixme
     },
 
     // test if any rows on this board contain conflicts
@@ -99,7 +99,7 @@
       // all must be false to return false
       // as soon we see a single true then return turn
       // otherwise return false
-      // return false; // fixme
+      return false; // fixme
     },
 
 
