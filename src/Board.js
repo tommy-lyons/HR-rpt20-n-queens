@@ -85,45 +85,72 @@
     hasRowConflictAt: function(rowIndex) {
       // what defines a rowConflict on a specific row
       // iterate over row and see if we have more than 1 1's
-      // console.log(this);
-      // this.Board[rowIndex]
-      // if yes return true
-      // else return false
-      return false; // fixme
+      var rooks = 0;
+      for (let i = 0; i < this.rows()[rowIndex].length; i++) {
+        if (this.rows()[rowIndex][i] === 1) {
+          rooks++;
+        }
+      }
+      return rooks > 1 ? true : false;
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      // iterate over the board and call hasRowConflicteAt(rowIndex)
-      // for each row.
+      // iterate over the board and call hasRowConflictAt(rowIndex) for each row
+      var found = false;
+      for (let i = 0; i < this.rows().length; i++) {
+        if (this.hasRowConflictAt(i)) {
+          found = true; // as soon we see a single true then return turn
+        }
+      }
       // all must be false to return false
-      // as soon we see a single true then return turn
-      // otherwise return false
-      return false; // fixme
+      return found; // otherwise return false
     },
-
-
 
     // COLUMNS - run from top to bottom
     // --------------------------------------------------------------
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
+      // want to check EACH 'row array' at the given colIndex and see if theres a rook there
+      // if there is a rook, then increment a counter;
+      var rooks = 0;
+
+      for (let i = 0; i < this.rows().length; i++) {
+        if (this.rows()[i][colIndex] === 1) {
+          rooks++;
+        }
+      }
+      return rooks > 1 ? true : false;
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      return false; // fixme
+      var found = false;
+      for (let i = 0; i < this.rows().length; i++) {
+        if (this.hasColConflictAt(i) ) {
+          found = true;
+        }
+      }
+      return found;
     },
-
-
 
     // Major Diagonals - go from top-left to bottom-right
     // --------------------------------------------------------------
     //
     // test if a specific major diagonal on this board contains a conflict
+
+    //     0   1    2    3
+    // 0       1
+
+    // 1            1
+
+    // 2   1
+
+    // 3       1
+
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
+
       return false; // fixme
     },
 
