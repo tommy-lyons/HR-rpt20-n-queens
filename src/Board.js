@@ -139,16 +139,6 @@
     // --------------------------------------------------------------
     //
     // test if a specific major diagonal on this board contains a conflict
-
-    //     0   1    2    3
-    // 0       1
-
-    // 1            1
-
-    // 2   1
-
-    // 3       1
-
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
       return false; // fixme
     },
@@ -157,6 +147,7 @@
     hasAnyMajorDiagonalConflicts: function() {
       return false; // fixme
     },
+
 
 
     // Minor Diagonals - go from top-right to bottom-left
