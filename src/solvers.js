@@ -87,7 +87,29 @@ window.countNRooksSolutions = function (n) {
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n queens placed such that none of them can attack each other
 window.findNQueensSolution = function(n) {
-  var solution = undefined; //fixme
+  var myBoard = new Board({n: n});
+  var solution = myBoard.rows();
+  var found = false;
+
+  var solver = function(row) {
+    if (row === n) {
+      solution = myBoard.rows();
+      found = true;
+      return;
+    } else {
+      for (let col = 0; col < n; col++) {
+        myBoard.togglePiece(row, col);
+        if (myBoard.hasAnyQueensConflicts(col) === false) { // do we need this parameter why?
+          solver(row + 1);
+        }
+        if (found) {
+          return;
+        }
+        myBoard.togglePiece(row, col);
+      }
+    }
+  };
+  solver(0);
 
   console.log('Single solution for ' + n + ' queens:', JSON.stringify(solution));
   return solution;
@@ -95,7 +117,24 @@ window.findNQueensSolution = function(n) {
 
 // return the number of nxn chessboards that exist, with n queens placed such that none of them can attack each other
 window.countNQueensSolutions = function(n) {
-  var solutionCount = undefined; //fixme
+
+  var solutionCount = 0;
+  var myBoard = new Board({n: n});
+
+  var solver = function(row) {
+    if (row === n) {
+      solutionCount++;
+    } else {
+      for (let col = 0; col < n; col++) {
+        myBoard.togglePiece(row, col);
+        if (myBoard.hasAnyQueensConflicts(col) === false) { // do we need this parameter why?
+          solver(row + 1);
+        }
+        myBoard.togglePiece(row, col);
+      }
+    }
+  };
+  solver(0);
 
   console.log('Number of solutions for ' + n + ' queens:', solutionCount);
   return solutionCount;
